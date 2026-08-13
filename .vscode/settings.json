@@ -1,0 +1,16 @@
+{
+    // Giúp VSCode nhận diện code trong custom_addons để gợi ý chính xác hơn
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/custom_addons"
+    ],
+    // Tự động format code Python theo chuẩn khi lưu
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    // Ẩn bớt các file rác sinh ra trong quá trình chạy để workspace gọn gàng
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    }
+}
