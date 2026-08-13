@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    image: odoo:19.0 # Sử dụng Odoo 16 (bản ổn định và phổ biến cho việc phát triển)
+    depends_on:
+      - db
+    ports:
+      - "8069:8069" # Map port của Odoo ra ngoài localhost (Windows)
+    volumes:
+      - ./custom_addons:/mnt/extra-addons # Mount thư mục code của chúng ta vào Odoo container
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=myodoo
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=myodoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata # Lưu trữ data của DB tránh mất dữ liệu khi xóa container
+    restart: unless-stopped
+
+volumes:
+  odoo-db-data:

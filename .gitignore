@@ -1,0 +1,19 @@
+# Python & Odoo
+__pycache__/
+*.py[cod]
+*.pot
+*.pyc
+
+# OS generated files (Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE & Editor (VSCode)
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+
+# Docker & Local files
+.env
