@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     image: odoo:19.0 # Sử dụng Odoo 16 (bản ổn định và phổ biến cho việc phát triển)
