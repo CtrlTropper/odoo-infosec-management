@@ -56,4 +56,18 @@
     <!-- 4. MENUS -->
     <menuitem id="menu_infosec_root" name="InfoSec" sequence="10"/>
     <menuitem id="menu_infosec_asset" name="Quản lý Thiết bị" parent="menu_infosec_root" action="action_infosec_asset" sequence="10"/>
+    
+    <!-- 5. SERVER ACTION: Nút Cách ly khẩn cấp -->
+    <record id="action_quarantine_assets" model="ir.actions.server">
+        <field name="name">Cách ly Khẩn cấp (Quarantine)</field>
+        <field name="model_id" ref="model_infosec_asset"/>
+        <field name="binding_model_id" ref="model_infosec_asset"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            # Đoạn code Python này sẽ lặp qua các bản ghi được tick chọn và đổi trạng thái
+            for record in records:
+                record.write({'status': 'compromised'})
+        </field>
+    </record>
 </odoo>
